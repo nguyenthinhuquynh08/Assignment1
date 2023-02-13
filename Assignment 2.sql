@@ -78,7 +78,7 @@ ExamID INT PRIMARY KEY AUTO_INCREMENT,
 `Code` VARCHAR(10) NOT NULL,
 Title VARCHAR(100) NOT NULL,
 CategoryID INT NOT NULL,
-Duration TIME NOT NULL,
+Duration TINYINT NOT NULL,
 CreatorID INT NOT NULL,
 CreateDate DATE NOT NULL,
 CONSTRAINT exam_categoryquestion_fk FOREIGN KEY (CategoryID) REFERENCES categoryquestion(CategoryID)
