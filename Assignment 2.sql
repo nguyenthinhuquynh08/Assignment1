@@ -25,8 +25,8 @@ Fullname VARCHAR(100),
 DepartmentID TINYINT,
 PositionID TINYINT,
 CreateDate date,
-CONSTRAINT FOREIGN KEY (DepartmentID) REFERENCES department(DepartmentID),
-CONSTRAINT FOREIGN KEY (PositionID) REFERENCES `position`(PositionID)
+CONSTRAINT account_department_fk FOREIGN KEY (DepartmentID) REFERENCES department(DepartmentID),
+CONSTRAINT account_position_fk FOREIGN KEY (PositionID) REFERENCES `position`(PositionID)
 );
 -- Table 4
 CREATE TABLE `group` (
@@ -40,8 +40,8 @@ CREATE TABLE groupaccount(
 GroupID INT,
 AccountID INT,
 JoinDate date,
-CONSTRAINT FOREIGN KEY (GroupID) REFERENCES `group`(GroupID),
-CONSTRAINT FOREIGN KEY (AccountID) REFERENCES `account`(AccountID)
+CONSTRAINT groupaccount_group_fk FOREIGN KEY (GroupID) REFERENCES `group`(GroupID),
+CONSTRAINT groupaccount_account_fk FOREIGN KEY (AccountID) REFERENCES `account`(AccountID)
 );
 -- Table 6
 CREATE TABLE typequestion(
@@ -61,8 +61,8 @@ CategoryID INT NOT NULL,
 TypeID INT NOT NULL,
 CreatorID INT NOT NULL,
 CreateDate DATE,
-CONSTRAINT FOREIGN KEY (TypeID) REFERENCES typequestion(TypeID),
-CONSTRAINT FOREIGN KEY (CategoryID) REFERENCES categoryquestion(CategoryID)
+CONSTRAINT question_typequestion_fk FOREIGN KEY (TypeID) REFERENCES typequestion(TypeID),
+CONSTRAINT question_categoryquestion_fk FOREIGN KEY (CategoryID) REFERENCES categoryquestion(CategoryID)
 );
 -- Table 9
 CREATE TABLE answer(
@@ -70,7 +70,7 @@ AnswerID INT PRIMARY KEY AUTO_INCREMENT,
 Content VARCHAR(300) NOT NULL,
 QuestionID INT NOT NULL,
 isCorrect ENUM ('True', 'False'),
-CONSTRAINT FOREIGN KEY (QuestionID) REFERENCES question(QuestionID)
+CONSTRAINT answer_question_fk FOREIGN KEY (QuestionID) REFERENCES question(QuestionID)
 );
 -- Table 10
 CREATE TABLE exam(
@@ -81,13 +81,13 @@ CategoryID INT NOT NULL,
 Duration TIME NOT NULL,
 CreatorID INT NOT NULL,
 CreateDate DATE NOT NULL,
-CONSTRAINT FOREIGN KEY (CategoryID) REFERENCES categoryquestion(CategoryID)
+CONSTRAINT exam_categoryquestion_fk FOREIGN KEY (CategoryID) REFERENCES categoryquestion(CategoryID)
 );
 -- Table 11
 CREATE TABLE examquestion(
 ExamID INT NOT NULL,
 QuestionID INT NOT NULL,
-CONSTRAINT FOREIGN KEY (ExamID) REFERENCES exam(ExamID),
-CONSTRAINT FOREIGN KEY (QuestionID) REFERENCES question(QuestionID)
+CONSTRAINT examquestion_exam_fk FOREIGN KEY (ExamID) REFERENCES exam(ExamID),
+CONSTRAINT examquestion_question_ fk FOREIGN KEY (QuestionID) REFERENCES question(QuestionID)
 );
 
