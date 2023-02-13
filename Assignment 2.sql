@@ -69,7 +69,7 @@ CREATE TABLE answer(
 AnswerID INT PRIMARY KEY AUTO_INCREMENT,
 Content VARCHAR(300) NOT NULL,
 QuestionID INT NOT NULL,
-isCorrect ENUM ('True', 'False'),
+isCorrect BIT,
 CONSTRAINT answer_question_fk FOREIGN KEY (QuestionID) REFERENCES question(QuestionID)
 );
 -- Table 10
